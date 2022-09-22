@@ -1,0 +1,90 @@
+<div class="container pt-5 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <!-- Content -->
+            <div class="card p-3">
+                <form>
+                    <h1 class="h2 mb-4">Конвертер валют</h1>
+
+                    <div class="courses">
+                        <div class="course-item card card-body">
+                            <div class="course-item-title">Курс USD</div>
+                            <div class="course-item-value" data-value="USD">--.--</div>
+                        </div>
+                        <div class="course-item card card-body">
+                            <div class="course-item-title">Курс EUR</div>
+                            <div class="course-item-value" data-value="EUR">--.--</div>
+                        </div>
+                        <div class="course-item card card-body">
+                            <div class="course-item-title">Курс GPB</div>
+                            <div class="course-item-value" data-value="GBP">--.--</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col">
+                            <label for="name">Продаю:</label>
+                            <select
+                                class="form-control"
+                                id="exampleFormControlSelect1"
+                                [(ngModel)]="inputCurrency"
+                                [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="sellCurrency(inputCurrency, outputCurrency)"
+                            >
+                                <option value="UAH" selected>UAH — Гривні</option>
+                                <option value="USD">USD — Долар США</option>
+                                <option value="EUR">EUR — Євро</option>
+                                <option value="GBP">GPB — Фунт стерлінгів</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="name">Купую:</label>
+                            <select
+                                id="select"
+                                class="form-control"
+                                id="exampleFormControlSelect1"
+                                [(ngModel)]="outputCurrency"
+                                [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="buyCurrency(outputCurrency, inputCurrency)"
+                            >
+                                <option value="USD" selected>USD — Долар США</option>
+                                <option value="EUR">EUR — Євро</option>
+                                <option value="GBP">GPB — Фунт стерлінгів</option>
+                                <option value="UAH">UAH — Гривні</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <input
+                                id="input"
+                                type="number"
+                                class="form-control"
+                                id="name"
+                                autofocus
+                                [(ngModel)]="currencyToSell"
+                                [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="sellCurrency(inputCurrency, outputCurrency)"
+                            />
+                        </div>
+                        <div class="col">
+                            <input
+                                id="result"
+                                type="number"
+                                class="form-control"
+                                id="name"
+                                [(ngModel)]="currencyToBuy"
+                                [ngModelOptions]="{standalone: true}" 
+                                (ngModelChange)="buyCurrency(outputCurrency, inputCurrency)"
+                            />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- // Content -->
+        </div>
+        <!-- // col-6 -->
+    </div>
+    <!-- // row -->
+</div>
