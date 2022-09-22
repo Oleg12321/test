@@ -32,6 +32,7 @@ export class TaskComponent implements OnInit {
 
   public buyCurrency(value: any, key: any) {
     console.log(value, key);
+    
     this.taskService.retrieveCurrencyExchange(value, key)
           .subscribe((result) => {
             this.currencyToSell = +(this.currencyToBuy * result.results[key]).toFixed(2);
