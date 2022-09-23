@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { CurrencyComponent } from './currency/currency.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent
+    TaskComponent,
+    CurrencyComponent
   ],
   imports: [
     BrowserModule,

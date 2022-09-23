@@ -1,3 +1,4 @@
+import { ICurrencyExchange } from './currency.interface';
 import { TaskServiceService } from './task-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +13,7 @@ export class TaskComponent implements OnInit {
   public currencyToBuy!: number;
   public inputCurrency: string = 'UAH';
   public outputCurrency: string = 'USD';
+  public currencyItems = ['USD', 'EUR', 'GBP'];
 
   constructor(private taskService: TaskServiceService) {
 
@@ -21,21 +23,18 @@ export class TaskComponent implements OnInit {
 
   }
 
-  public sellCurrency(value: any, key: any) {
-    console.log(value, key);
+  public sellCurrency(value: string, key: string) {
     this.taskService.retrieveCurrencyExchange(value, key)
-          .subscribe((result) => {
-            this.currencyToBuy = +(this.currencyToSell * result.results[key]).toFixed(2);
+          .subscribe((result: ICurrencyExchange) => {
+            this.currencyToBuy = +(this.currencyToSell * (result as any).results[key]).toFixed(2);
             
           })
   }
 
-  public buyCurrency(value: any, key: any) {
-    console.log(value, key);
-    
+  public buyCurrency(value: string, key: string) {  
     this.taskService.retrieveCurrencyExchange(value, key)
           .subscribe((result) => {
-            this.currencyToSell = +(this.currencyToBuy * result.results[key]).toFixed(2);
+            this.currencyToSell = +(this.currencyToBuy * (result as any).results[key]).toFixed(2);
             
           })
   }
